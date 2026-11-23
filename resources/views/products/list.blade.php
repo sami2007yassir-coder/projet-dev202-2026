@@ -3,6 +3,10 @@
 @section('contenu')
     <h1>liste des produits</h1>
 
+    @if (session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
     <table class="table">
         <tr>
             <th>id</th>

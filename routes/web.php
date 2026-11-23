@@ -25,15 +25,10 @@ Route::get('/hello/{gender}/{nom}',
 
 Route::get('/users', [PagesController::class, 'listUsers']);
 
-Route::get('/products', [ProductsController::class, 'list']);
+Route::get('/products', [ProductsController::class, 'list'])->name('products.index');
 
+Route::get('/product/{id}', [ProductsController::class, 'detail'])->name('products.detail');
 
-//  /product/2 => adidas 150dh
-Route::get('/product/{id}',[ProductsController::class,'detail']);
+Route::get('/products/add', [ProductsController::class, 'create'])->name('products.create');
 
-
-// detail d'un seule produit
-//  /product/1 => adidas 150dh
-//  /product/2 => nike 299dh
-
-
+Route::post('/store', [ProductsController::class, 'store'])->name('products.store');
