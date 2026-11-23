@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 // localhost:8000/
@@ -22,12 +23,12 @@ Route::get(
 Route::get('/hello/{gender}/{nom}',
     [PagesController::class, 'helloGender']);
 
-Route::get('/users',[PagesController::class, 'listUsers']);
+Route::get('/users', [PagesController::class, 'listUsers']);
 
-use Illuminate\Support\Facades\Route;
+Route::get('/products', [ProductsController::class, 'list'])->name('products.index');
 
-// localhost:8000/
-Route::get('/', [PagesController::class, 'home'])->name('hm');
-// localhost:8000/about-us
-Route::get('/about-us', [PagesController::class, 'about'])->name('abt');
+Route::get('/product/{id}', [ProductsController::class, 'detail'])->name('products.detail');
 
+Route::get('/products/add', [ProductsController::class, 'create'])->name('products.create');
+
+Route::post('/store', [ProductsController::class, 'store'])->name('products.store');
