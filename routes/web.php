@@ -23,3 +23,11 @@ Route::get('/hello/{gender}/{nom}',
     [PagesController::class, 'helloGender']);
 
 Route::get('/users',[PagesController::class, 'listUsers']);
+
+use Illuminate\Support\Facades\Route;
+
+// localhost:8000/
+Route::get('/', [PagesController::class, 'home'])->name('hm');
+// localhost:8000/about-us
+Route::get('/about-us', [PagesController::class, 'about'])->name('abt');
+
